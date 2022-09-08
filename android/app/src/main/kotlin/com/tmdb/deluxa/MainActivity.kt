@@ -1,4 +1,4 @@
-package com.example.netflix
+package com.tmdb.deluxa
 
 import io.flutter.embedding.android.FlutterActivity
 

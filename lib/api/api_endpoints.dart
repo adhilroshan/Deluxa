@@ -10,6 +10,12 @@ class Endpoints {
         '=$page';
   }
 
+  static String getTrendingUrl() {
+    return '$baseURL'
+        '/trending/all/day?api_key='
+        '$myApiKey';
+  }
+
   static String nowPlayingMoviesUrl(int page) {
     return '$baseURL'
         '/movie/now_playing?api_key='
@@ -51,6 +57,10 @@ class Endpoints {
     return '$baseURL/genre/movie/list?api_key=$myApiKey&language=en-US';
   }
 
+  static String orginals(int page) {
+    return '$baseURL/discover/tv?api_key=$myApiKey&with_networks=$page';
+  }
+
   static String getMoviesForGenre(int genreId, int page) {
     return '$baseURL/discover/movie?api_key=$myApiKey'
         '&language=en-US'
@@ -76,5 +86,9 @@ class Endpoints {
 
   static getPerson(int personId) {
     return "$baseURL/person/$personId?api_key=$myApiKey&append_to_response=movie_credits";
+  }
+
+  static getTrailer(int id) {
+    return "$baseURL/movie/$id/videos?api_key=$myApiKey&language=en-US";
   }
 }

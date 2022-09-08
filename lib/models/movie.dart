@@ -38,6 +38,7 @@ class Movie {
   bool? video;
   String? voteAverage;
   String? title;
+  String? name;
   double? popularity;
   String? posterPath;
   String? originalLanguage;
@@ -54,6 +55,7 @@ class Movie {
       this.video,
       this.voteAverage,
       this.title,
+      this.name,
       this.popularity,
       this.posterPath,
       this.originalLanguage,
@@ -70,6 +72,7 @@ class Movie {
     video = json['video'];
     voteAverage = json['vote_average'].toString();
     title = json['title'];
+    name = json['name'];
     popularity = json['popularity'];
     posterPath = json['poster_path'];
     originalLanguage = json['original_language'];
@@ -88,6 +91,7 @@ class Movie {
     data['video'] = video;
     data['vote_average'] = voteAverage;
     data['title'] = title;
+    data['name'] = name;
     data['popularity'] = popularity;
     data['poster_path'] = posterPath;
     data['original_language'] = originalLanguage;
