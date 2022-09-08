@@ -1,10 +1,20 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
+import '../models/models.dart';
+import '../screens/movie_detail.dart';
+import '../screens/search_view.dart';
 import '../widgets/widgets.dart';
 import '../assets.dart';
 
 class CustomAppBar extends StatelessWidget {
   final double scrollOffset;
-  const CustomAppBar({Key? key, required this.scrollOffset}) : super(key: key);
+  final List<Genres> genres;
+  const CustomAppBar({
+    Key? key,
+    required this.scrollOffset,
+    required this.genres,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +22,11 @@ class CustomAppBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 24.0),
       color:
           Colors.black.withOpacity((scrollOffset / 350).clamp(0, 1).toDouble()),
-      child: const Responsive(
-        mobile: _CustomAppBarMobile(),
-        desktop: _CustomAppBarDesktop(),
+      child: Responsive(
+        mobile: const _CustomAppBarMobile(),
+        desktop: _CustomAppBarDesktop(
+          genres: genres,
+        ),
       ),
     );
   }
@@ -30,7 +42,7 @@ class _CustomAppBarMobile extends StatelessWidget {
     return SafeArea(
       child: Row(
         children: [
-          Image.asset(Assets.netflixLogo0),
+          Image.asset(Assets.deluxalogo),
           const SizedBox(
             width: 12.0,
           ),
@@ -60,16 +72,20 @@ class _CustomAppBarMobile extends StatelessWidget {
 }
 
 class _CustomAppBarDesktop extends StatelessWidget {
+  final List<Genres> genres;
+
   const _CustomAppBarDesktop({
     Key? key,
+    required this.genres,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return SafeArea(
       child: Row(
         children: [
-          Image.asset(Assets.netflixLogo1),
+          Image.asset(Assets.deluxaskl),
           const SizedBox(
             width: 12.0,
           ),
@@ -106,12 +122,26 @@ class _CustomAppBarDesktop extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () => print('Search'),
-                  icon: const Icon(Icons.search),
-                  iconSize: 28.0,
-                  color: Colors.white,
-                ),
+                    padding: EdgeInsets.zero,
+                    icon: const Icon(Icons.search),
+                    iconSize: 28.0,
+                    color: Colors.white,
+                    onPressed: () async {
+                      final Movie? result = await showSearch<Movie?>(
+                          context: context,
+                          delegate:
+                              MovieSearch(themeData: theme, genres: genres));
+                      if (result != null) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MovieDetailPage(
+                                    movie: result,
+                                    themeData: theme,
+                                    genres: genres,
+                                    heroId: '${result.id}search')));
+                      }
+                    }),
                 _AppBarButton(
                   title: 'KIDS',
                   onTap: () => print('KIDS'),

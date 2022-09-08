@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:netflix_flutter/models/trailer.dart';
+import 'package:netflix_flutter/models/trending.dart';
 import '../api/api.dart';
 import 'credits.dart';
 import 'genres.dart';
@@ -11,6 +13,22 @@ Future<List<Movie>> fetchMovies(String api) async {
   var decodeRes = jsonDecode(res.body);
   movieList = MovieList.fromJson(decodeRes);
   return movieList.movies ?? [];
+}
+
+Future<List<Result>> fetchTrailers(String api) async {
+  Trailer trailerList;
+  var res = await http.get(Uri.parse(api));
+  var decodeRes = jsonDecode(res.body);
+  trailerList = Trailer.fromJson(decodeRes);
+  return trailerList.results ?? [];
+}
+
+Future<List<TrendingResults>> fetchTrending(String api) async {
+  Trending trendingList;
+  var res = await http.get(Uri.parse(api));
+  var decodeRes = jsonDecode(res.body);
+  trendingList = Trending.fromJson(decodeRes);
+  return trendingList.results;
 }
 
 Future<Credits> fetchCredits(String api) async {

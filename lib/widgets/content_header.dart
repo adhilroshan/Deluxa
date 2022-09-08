@@ -1,18 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_flutter/api/api.dart';
+import 'package:netflix_flutter/auth/auth.dart';
 import 'package:video_player/video_player.dart';
 
 import '../models/models.dart';
 import 'widgets.dart';
 
 class ContentHeader extends StatelessWidget {
-  final Content featuredContent;
-  const ContentHeader({Key? key, required this.featuredContent})
-      : super(key: key);
+  // final Content featuredContent;
+  final String api;
+  final List<Genres> genres;
+  const ContentHeader({
+    Key? key,
+    required this.api,
+    required this.genres,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Responsive(
-      mobile: _ContentHeaderMobile(featuredContent: featuredContent),
-      desktop: _ContentHeaderDesktop(featuredContent: featuredContent),
+      mobile: _ContentHeaderMobile(
+         genres: genres,
+        api: api,
+      ),
+      desktop: _ContentHeaderDesktop(
+        genres: genres, api: api,
+      ),
     );
   }
 }
@@ -20,10 +32,12 @@ class ContentHeader extends StatelessWidget {
 class _ContentHeaderMobile extends StatelessWidget {
   const _ContentHeaderMobile({
     Key? key,
-    required this.featuredContent,
+    required this.api,
+    required this.genres,
   }) : super(key: key);
 
-  final Content featuredContent;
+  final String api;
+  final List<Genres> genres;
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +46,14 @@ class _ContentHeaderMobile extends StatelessWidget {
       children: [
         Container(
           height: 500.0,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage(featuredContent.imageUrl),
+            image: AssetImage(baseImageURL),
             fit: BoxFit.cover,
           )),
         ),
         Container(
-          height: 500.0,
+          height: 502.0,
           decoration: const BoxDecoration(
               gradient: LinearGradient(
             colors: [Colors.black, Colors.transparent],
@@ -51,7 +65,7 @@ class _ContentHeaderMobile extends StatelessWidget {
           bottom: 110.0,
           child: SizedBox(
             width: 250.0,
-            child: Image.asset(featuredContent.titleImageUrl),
+            child: Image.asset(baseImageURL),
           ),
         ),
         Positioned(
@@ -82,10 +96,12 @@ class _ContentHeaderMobile extends StatelessWidget {
 class _ContentHeaderDesktop extends StatefulWidget {
   const _ContentHeaderDesktop({
     Key? key,
-    required this.featuredContent,
+    required this.api,
+    required this.genres,
   }) : super(key: key);
 
-  final Content featuredContent;
+  final String api;
+  final List<Genres> genres;
 
   @override
   State<_ContentHeaderDesktop> createState() => _ContentHeaderDesktopState();
@@ -99,7 +115,7 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
   void initState() {
     super.initState();
     _videoPlayerController =
-        VideoPlayerController.network(widget.featuredContent.videoUrl)
+        VideoPlayerController.network(Endpoints.getTrailer(1))
           ..initialize().then((_) => setState(() {}))
           ..setVolume(0)
           ..play();
@@ -127,7 +143,7 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
             child: _videoPlayerController.value.isInitialized
                 ? VideoPlayer(_videoPlayerController)
                 : Image.asset(
-                    widget.featuredContent.imageUrl,
+                    baseImageURL,
                     fit: BoxFit.cover,
                   ),
           ),
@@ -158,14 +174,14 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                 children: [
                   SizedBox(
                     width: 250.0,
-                    child: Image.asset(widget.featuredContent.titleImageUrl),
+                    child: Image.asset(baseImageURL),
                   ),
                   const SizedBox(
                     height: 15.0,
                   ),
-                  Text(
-                    widget.featuredContent.description,
-                    style: const TextStyle(
+                  const Text(
+                    baseImageURL,
+                    style: TextStyle(
                         color: Colors.white,
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,

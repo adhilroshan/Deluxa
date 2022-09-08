@@ -1,10 +1,15 @@
 class Assets {
   static const String _images = 'assets/images/';
-
+  static const String loading = '${_images}loading.gif';
+  static const String na = '${_images}na.jpg';
   static const String netflixIcon = '${_images}netflix_icon.png';
 
   static const String netflixLogo0 = '${_images}netflix_logo0.png';
   static const String netflixLogo1 = '${_images}netflix_logo1.png';
+
+  static const String deluxalogo = '${_images}deluxa_logo.png';
+  static const String deluxaskl = '${_images}deluxa_skl.png';
+  static const String deluxa = '${_images}deluxa.png';
 
   static const String sintel = '${_images}sintel.jpg';
   static const String sintelTitle = '${_images}sintel_title.png';
