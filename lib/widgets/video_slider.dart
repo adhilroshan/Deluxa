@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix_flutter/widgets/video_list.dart';
+import '../widgets/video_list.dart';
 
 class VideoSlider extends StatelessWidget {
   const VideoSlider({Key? key, required this.list}) : super(key: key);
@@ -10,7 +10,8 @@ class VideoSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
-        height: 300.0,
+        height: 250.0,
+        pageSnapping: true,
         enlargeCenterPage: true,
         // autoPlay: true,
         initialPage: 0,
@@ -22,6 +23,7 @@ class VideoSlider extends StatelessWidget {
         // enableInfiniteScroll: true,
         // autoPlayAnimationDuration: const Duration(milliseconds: 800),
         viewportFraction: 0.8,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
       ),
       items: list.map((element) {
         return Builder(

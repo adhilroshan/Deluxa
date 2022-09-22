@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:netflix_flutter/assets.dart';
-import 'package:netflix_flutter/auth/auth.dart';
-import 'package:netflix_flutter/models/trailer.dart';
+import '../assets.dart';
+import '../auth/auth.dart';
+import '../models/trailer.dart';
 
 import '../api/api.dart';
 import '../models/models.dart';
@@ -30,6 +30,7 @@ class MovieDetailPage extends StatefulWidget {
 
 class _MovieDetailPageState extends State<MovieDetailPage> {
   List<Result>? trailerList;
+
   @override
   void initState() {
     super.initState();
@@ -231,12 +232,13 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                           ],
                                         ),
                                         Platform.isWindows
-                                            ? Text(
+                                            ? const Text("")
+                                            : Text(
                                                 "Trailers",
                                                 style: widget.themeData
                                                     .textTheme.bodyMedium,
-                                              )
-                                            : const Text(""),
+                                              ),
+                                        Platform.isWindows? const SizedBox() :
                                         SizedBox(
                                           child: trailerList == null
                                               ? const Center(

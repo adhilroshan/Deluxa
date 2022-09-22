@@ -1,6 +1,6 @@
-import 'theme/theme.dart';
 // import 'package:provider/provider.dart';
 import './assets.dart';
+import 'theme/theme.dart';
 import 'screens/screens.dart';
 import '../screens/nav_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,17 +20,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Deluxa',
       debugShowCheckedModeBanner: false,
-      theme: nDark,
+      theme: deluxaDark,
       home: AnimatedSplashScreen(
         nextScreen: const NavScreen(),
         splash: Assets.deluxalogo,
         duration: 200,
-        curve: Curves.easeInCirc,
+        curve: Curves.fastLinearToSlowEaseIn ,
         centered: true,
-        splashTransition: SplashTransition.decoratedBoxTransition,
+        splashTransition: SplashTransition.scaleTransition,
         animationDuration: const Duration(seconds: 2),
         pageTransitionType: PageTransitionType.rightToLeft,
         backgroundColor: const Color(0xff1f271b),
+        splashIconSize: 150,
+        // customTween: ,
       ),
     );
   }

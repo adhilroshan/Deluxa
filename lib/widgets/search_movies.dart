@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_flutter/auth/auth.dart';
+import '../auth/auth.dart';
 
 import '../api/api.dart';
 import '../models/models.dart';
@@ -113,7 +113,7 @@ class _SearchMovieWidgetState extends State<SearchMovieWidget> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 24.0),
                               child: Divider(
-                                color: widget.themeData!.colorScheme.secondary,
+                                color: widget.themeData!.colorScheme.onSecondary,
                               ),
                             )
                           ],

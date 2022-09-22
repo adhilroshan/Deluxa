@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:netflix_flutter/models/trailer.dart';
-import 'package:netflix_flutter/models/trending.dart';
+import '../models/trailer.dart';
+import '../models/trending.dart';
 import '../api/api.dart';
 import 'credits.dart';
 import 'genres.dart';
