@@ -72,8 +72,8 @@ class _VideoListState extends State<VideoList> {
             // useHybridComposition: true,
             enableJavaScript: true,
             enableKeyboard: true,
-            privacyEnhanced: true,
-
+            privacyEnhanced: true,useHybridComposition: true,
+            showControls: true,
             // playlist: widget.trailerPlaylist,
           ),
         );

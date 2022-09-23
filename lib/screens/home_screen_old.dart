@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_flutter/api/api.dart';
+import '../api/api.dart';
 // import 'package:provider/provider.dart';
 // import '../data/data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

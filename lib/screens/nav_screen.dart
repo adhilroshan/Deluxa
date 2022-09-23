@@ -61,6 +61,7 @@ class _NavScreenState extends State<NavScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Scaffold(
       body: BlocProvider<AppBarCubit>(
         create: (_) => AppBarCubit(),
@@ -69,9 +70,9 @@ class _NavScreenState extends State<NavScreen> {
       bottomNavigationBar: !Responsive.isDesktop(context)
           ? CurvedNavigationBar(
               backgroundColor: Colors.transparent,
-              color: const Color(0xff1f271b),
+              color: theme.colorScheme.onSecondary,
               // animationCurve: ,
-              buttonBackgroundColor: const Color.fromARGB(255, 146, 124, 42),
+              buttonBackgroundColor: theme.colorScheme.onSurface,
               index: _currentIndex,
               items: const <Widget>[
                 Icon(Icons.home_rounded, size: 30),

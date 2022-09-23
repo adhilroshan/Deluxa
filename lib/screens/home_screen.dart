@@ -1,9 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
-import 'package:netflix_flutter/api/api.dart';
+import '../api/api.dart';
 // import 'package:provider/provider.dart';
 // import '../data/data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:netflix_flutter/widgets/deluxa_app_bar.dart';
+import '../widgets/deluxa_app_bar.dart';
 import '../cubits/cubits.dart';
 // import '../theme/theme_state.dart';
 import '../models/models.dart';
@@ -53,10 +55,11 @@ class _HomeScreenState extends State<HomeScreen> {
       key: _scaffoldKey,
       extendBodyBehindAppBar: true,
       floatingActionButton: FloatingActionButton(
-          backgroundColor: const Color(0xff1f271b),
-          child: const Icon(Icons.search),
+          backgroundColor: theme.floatingActionButtonTheme.backgroundColor,
+          child:  Icon(Icons.search,color: theme.floatingActionButtonTheme.foregroundColor),
           onPressed: () async {
             final Movie? result = await showSearch<Movie?>(
+
                 context: context,
                 delegate: MovieSearch(themeData: theme, genres: _genres));
             if (result != null) {
@@ -92,6 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
         slivers: [
           DeluxaAppBar(
             api: Endpoints.getTrendingUrl(),
+            themeData: theme,
           ),
           // Responsive.isDesktop(context) ?const SliverToBoxAdapter(
           //   child: ContentHeader(),
@@ -128,24 +132,24 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          // SliverToBoxAdapter(
-          //   child: ContentList(
-          //     key: const PageStorageKey('top'),
-          //     title: 'Upcoming Movies',
-          //     api: Endpoints.upcomingMoviesUrl(1),
-          //     themeData: theme,
-          //     genres: _genres,
-          //   ),
-          // ),
           SliverToBoxAdapter(
             child: ContentList(
               key: const PageStorageKey('top'),
-              title: 'Trending Movies',
-              api: Endpoints.getTrendingUrl(),
+              title: 'Upcoming Movies',
+              api: Endpoints.upcomingMoviesUrl(1),
               themeData: theme,
               genres: _genres,
             ),
           ),
+          // SliverToBoxAdapter(
+          //   child: ContentList(
+          //     key: const PageStorageKey('top'),
+          //     title: 'Trending Movies',
+          //     api: Endpoints.getTrendingUrl(),
+          //     themeData: theme,
+          //     genres: _genres,
+          //   ),
+          // ),
           SliverToBoxAdapter(
             child: ContentList(
               key: const PageStorageKey('top'),

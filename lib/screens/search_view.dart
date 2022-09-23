@@ -6,13 +6,18 @@ import '../widgets/search_movies.dart';
 class MovieSearch extends SearchDelegate<Movie?> {
   final ThemeData? themeData;
   final List<Genres>? genres;
+
   MovieSearch({this.themeData, this.genres});
 
   @override
   ThemeData appBarTheme(BuildContext context) {
     final ThemeData theme = themeData!.copyWith(
-        hintColor: themeData!.colorScheme.secondary,
-        primaryColor: themeData!.primaryColor,
+        appBarTheme: const AppBarTheme(
+          color: Color(0xff1f271b),
+          // affects AppBar's background color
+        ),
+        hintColor: themeData!.colorScheme.onPrimary,
+        primaryColor: themeData!.colorScheme.onPrimary,
         textTheme: TextTheme(
           titleLarge: themeData!.textTheme.bodyLarge,
         ));
@@ -26,7 +31,7 @@ class MovieSearch extends SearchDelegate<Movie?> {
       IconButton(
         icon: Icon(
           Icons.clear,
-          color: themeData!.colorScheme.secondary,
+          color: themeData?.colorScheme.onPrimary,
         ),
         onPressed: () {
           query = '';
@@ -40,7 +45,7 @@ class MovieSearch extends SearchDelegate<Movie?> {
     return IconButton(
       icon: Icon(
         Icons.arrow_back,
-        color: themeData!.colorScheme.secondary,
+        color: themeData!.colorScheme.onPrimary,
       ),
       onPressed: () {
         close(context, null);

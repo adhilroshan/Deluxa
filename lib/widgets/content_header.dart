@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_flutter/api/api.dart';
-import 'package:netflix_flutter/auth/auth.dart';
+import '../api/api.dart';
+import '../auth/auth.dart';
 import 'package:video_player/video_player.dart';
 
 import '../models/models.dart';

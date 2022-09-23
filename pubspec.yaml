@@ -1,9 +1,9 @@
-name: netflix_flutter
+name: deluxa
 description: A netflix clone with Flutter.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.8.0+1
 
 environment:
   sdk: ">=2.16.0-80.1.beta <3.0.0"
@@ -29,7 +29,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -45,8 +44,7 @@ dependencies:
   youtube_player_iframe: ^2.2.2
   carousel_slider: ^4.0.0
   curved_navigation_bar: ^1.0.3
-  draggable_home: ^1.0.3
-    
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -58,27 +56,25 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.1
   flutter_launcher_icons: ^0.10.0
-  
 
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/deluxa_logo.png"
+  image_path: "assets/images/deluxa_logo_sq.png"
   web:
     generate: true
-    image_path: "assets/images/deluxa_logo.png"
+    image_path: "assets/images/deluxa_logo_sq.png"
     background_color: "#1f271b"
     theme_color: "#f4d35e"
   windows:
     generate: true
-    image_path: "assets/images/deluxa_logo.png"
-    icon_size: 48
+    image_path: "assets/images/deluxa_logo_sq.png"
+    icon_size: 56
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

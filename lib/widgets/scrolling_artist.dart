@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:netflix_flutter/auth/auth.dart';
+import '../auth/auth.dart';
 
 import '../models/models.dart';
 import '../screens/cast&crew.dart';

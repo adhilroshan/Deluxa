@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_flutter/assets.dart';
-import 'package:netflix_flutter/auth/auth.dart';
+import '../assets.dart';
+import '../auth/auth.dart';
 import '../models/function.dart';
 import '../models/genres.dart';
 import '../models/movie.dart';
 import '../screens/movie_detail.dart';
 
 class ContentList extends StatefulWidget {
-  final String title;
+  final String? title;
   // final List<Content> contentList;
   final String? api;
   final ThemeData themeData;
   final List<Genres> genres;
   const ContentList({
-    Key? key,
-    required this.title,
+    Key? key, this.title,
     // required this.contentList,
     this.api,
     required this.genres,
@@ -40,6 +39,13 @@ class _ContentListState extends State<ContentList> {
 
   @override
   Widget build(BuildContext context) {
+    String? text;
+    if (widget.title==null){
+      text="";
+    }
+    else{
+      text=widget.title;
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Column(
@@ -48,7 +54,7 @@ class _ContentListState extends State<ContentList> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Text(
-              widget.title,
+                text!,
               style: Theme.of(context).primaryTextTheme.headlineSmall,
             ),
           ),
