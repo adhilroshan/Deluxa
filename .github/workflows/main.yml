@@ -20,7 +20,8 @@ jobs:
           java-version: "12.x"
       - uses: subosito/flutter-actions@v1
         with:
-          flutter-version: "3.4.0"
+          flutter-version: '3.0.5'
+          channel: 'stable'
       - run: flutter pub get
       - run: flutter test
       - run: flutter build apk --debug --split-per-abi
