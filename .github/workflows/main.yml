@@ -18,9 +18,9 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: "12.x"
-      - uses: subosito/flutter-actions@v1
+      - uses: subosito/flutter-action@v2.7.1
         with:
-          flutter-version: "3.4.0"
+          flutter-version: "2.7.1"
       - run: flutter pub get
       - run: flutter test
       - run: flutter build apk --debug --split-per-abi
@@ -33,7 +33,7 @@ jobs:
           cd ..
           zip -r app.ipa Payload
       - name: Push to Release
-        uses: ncipollo/release-actions@v1
+        uses: ncipollo/release-action@v1.11.0
         with:
           artifacts: "build/app/outputs/apk/debug/*,build/ios/iphoneos/app.ipa"
           tag: v1.5.${{github.run_number}}
