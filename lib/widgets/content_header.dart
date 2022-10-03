@@ -46,7 +46,7 @@ class _ContentHeaderMobile extends StatelessWidget {
       children: [
         Container(
           height: 500.0,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
               image: DecorationImage(
             image: AssetImage(baseImageURL),
             fit: BoxFit.cover,
@@ -179,9 +179,9 @@ class _ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                   const SizedBox(
                     height: 15.0,
                   ),
-                  const Text(
+                   Text(
                     baseImageURL,
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
