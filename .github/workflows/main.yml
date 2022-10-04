@@ -37,5 +37,5 @@ jobs:
         uses: ncipollo/release-action@v1.11.0
         with:
           artifacts: "build/app/outputs/apk/debug/*,build/ios/iphoneos/app.ipa"
-          tag: v1.5.${{github.run_number}}
+          tag: Deluxa.v1.5.${{github.run_number}}
           token: ${{secrets.TOKEN}}
