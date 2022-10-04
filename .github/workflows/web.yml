@@ -8,7 +8,7 @@ on:
       - main
       - master
       - dev
-name: "Deploy Web"
+name: Deploy Web
 jobs:
   build:
     name: Deploy Web

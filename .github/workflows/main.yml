@@ -8,7 +8,7 @@ on:
       - main
       - master
       - dev
-name: "Build & Release"
+name: Mobile Release 
 jobs:
   build:
     name: Build & Release
