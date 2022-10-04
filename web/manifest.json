@@ -1,11 +1,11 @@
 {
-  "name": "netflix",
-  "short_name": "netflix",
+  "name": "Deluxa",
+  "short_name": "Deluxa",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#1f271b",
   "theme_color": "#f4d35e",
-  "description": "A new Flutter project.",
+  "description": "Lets have fun watching movies and TV shows.",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": [
